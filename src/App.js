@@ -6,6 +6,7 @@ import NavBar from './components/navBar';
 import userContainer from './components/userContainer';
 import profileContainer from './components/profileContainer'
 import publish from './components/publish'
+import chats from './components/chats'
 
 class App extends Component {
 
@@ -39,6 +40,8 @@ class App extends Component {
                                 <Route exact path="/productos" component={foodContainer} />
                                 <Route exact path="/perfil" component={profileContainer} />
                                 <Route exact path="/publicar" component={publish} />
+                                <Route exact path="/chats" component={chats} usuario={this.state.user} />
+
 
                             </div>
                         </div>

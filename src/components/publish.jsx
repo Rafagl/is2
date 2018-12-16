@@ -41,7 +41,6 @@ class publish extends Component {
     handleChange = (campo, item) => {
 
         let exit = false;
-
         this.state.data[campo].map(ob => {
             if (ob === item) {
                 exit = true
@@ -78,7 +77,7 @@ class publish extends Component {
     render() {
         return (
             <div>
-                <div className="profileContainer w3-round-large">
+                <div className="profileContainer w3-round-large w3-darkgreen">
                     <form onSubmit={this.handleSubmit} style={{width: '60%', margin: 'auto'}}>
                         Nombre:<input type="text" className="w3-input w3-round" id="name" />
                         <br />

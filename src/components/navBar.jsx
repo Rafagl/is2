@@ -34,16 +34,17 @@ class navBar extends Component {
     isLogged = () => {
         if (this.props.isLogged) {
             return (
-                <ul className="w3-bar w3-grey">
-                    <Link to="/productos" className="w3-bar-item w3-button">Comidas</Link>
-                    <Link to="/usuarios" className="w3-bar-item w3-button">Usuarios</Link>
-                    <Link to="/publicar" className="w3-bar-item w3-button">Publicar</Link>
+                <ul className="w3-bar w3-teal">
+                    <Link to="/productos" className="w3-bar-item w3-button"><h3>Comidas</h3></Link>
+                    <Link to="/usuarios" className="w3-bar-item w3-button"><h3>Usuarios</h3></Link>
+                    <Link to="/publicar" className="w3-bar-item w3-button"><h3>Publicar</h3></Link>
+                    <Link to="/chats" className="w3-bar-item w3-button"><h3>Chats</h3></Link>
 
                     <div className="w3-dropdown-hover w3-right">
-                        <button className="w3-button">Perfil</button>
+                        <button className="w3-button"><h3>Perfil</h3></button>
                         <div className="w3-dropdown-content w3-bar-block w3-border" style={{right: '0'}}>
-                            <Link to="/perfil" className="w3-bar-item w3-button">Ajustes</Link>
-                            <Link to="/" className="w3-bar-item w3-button" onClick={this.props.logOut}>Cerrar sesión</Link>
+                            <Link to="/perfil" className="w3-bar-item w3-button"><h4>Ajustes</h4></Link>
+                            <Link to="/" className="w3-bar-item w3-button" onClick={this.props.logOut}><h4>Cerrar sesión</h4></Link>
                         </div>
                     </div>
                 </ul>
@@ -51,7 +52,6 @@ class navBar extends Component {
 
             )
         } else {
-            console.log("hola")
             return (
                 <ul className="w3-bar w3-grey">
                     <button className="w3-bar-item w3-button" onClick={this.handleOpenS} >Registarse</button>

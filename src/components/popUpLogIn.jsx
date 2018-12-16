@@ -27,10 +27,23 @@ export default class popUpLogIn extends React.Component {
 
         if (send) {
             this.props.onClose()
-            alert('¡Logeado!')
+            (async () => {
+                const rawResponse = await fetch(/*'https://localhost:8080/MiComida/api/usuarios*/ 'https://jsonplaceholder.typicode.com/posts', {
+                  method: 'POST',
+                  headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                  },
+                  body: JSON.stringify({
+                      contrasena: document.getElementById("password").value,
+                      correo: document.getElementById("email").value,
+                    })
+                });
+                const content = await rawResponse.json();
+                console.log(content.status);
+              })();
         }
     }
-
 
     render() {
         return (

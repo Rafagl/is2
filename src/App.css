@@ -1,14 +1,9 @@
-html{
-  background: cadetblue;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
 .App {
   text-align: center;
 }
 
 .food-container{
-  background-color: #4CAF50;
+  background-color: #6B8E23;
   width: 100%;
   color: white;
   font-size: 1.5em;
@@ -69,11 +64,6 @@ ul {
   overflow: hidden;
   background-color: #333;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-li {
-  /*border-right:1px solid #bbb;*/
-
 }
 
 li:last-child {
@@ -206,6 +196,9 @@ input{
   padding: 5%;
   margin-top: 5em;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-
+  opacity: 0.9;
 }
+#div{
+  display:block;
+  }
 

@@ -11,36 +11,45 @@ class profileContainer extends Component {
     }
 
     handleSubmit = () =>{
-
     }
     render() {
-
         const img = null;
         return (
-            <div className="profileContainer">
+            <div className="profileContainer w3-round w3-teal">
                 <form>
-                    <div style={{width: '30%', margin: 'auto'}}>
+                    <div style={{width: '30%', margin: 'auto'}} >
                         <img src={this.state.profileImg}/>
                         <br/>
-                        <button className="w3-button w3-blue w3-round-xlarge">Cambiar imagen de perfil</button>
+                        <button className="w3-button w3-blue w3-round-xlarge">Cambiar imagen de <br/>perfil</button>
                         <br/>
                         <br/>
-                        Nuevo correo: <input type="text" className="w3-input" />
+                        Nuevo correo: <input type="text" className="w3-input w3-round-large" />
                         <br/>
                         <br/>
-                        Nueva contraseña: <input type="password" className="w3-input" />
+                        Nueva contraseña: <input type="password" className="w3-input w3-round-large" />
                         <br/>
                         <br/>
-                        Nuevo nombre de usuario: <input type="text" className="w3-input" />
+                        Nuevo nombre de usuario: <input type="text" className="w3-input w3-round-large" />
+                        <br/>
+                        <br/>
+                        Localización: 
+                        <br/>
+                        <br/>
+                        <label className="container" >Barcelona
+                                <input type="checkbox" id="checkbox1"/>
+                                <span className="checkmark"></span>
+                            </label>
+                            <label className="container">Madrid
+                                <input type="checkbox" id="checkbox2" />
+                                <span className="checkmark"></span>
+                            </label>
                         <br/>
                         <br/>
                         <button className="w3-button w3-blue w3-round-xlarge">Aceptar</button>
-
                     </div>
                 </form>
             </div>
         );
     }
 }
-
 export default profileContainer;
