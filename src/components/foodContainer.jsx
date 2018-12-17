@@ -10,10 +10,8 @@ class foodContainer extends React.Component {
         super(props);
         this.state = { 
             showPopUp: false,
-            href: [],
             productos: [],
-            users: [],
-            uriProductos : "",
+            uriProductos : "http://localhost:8080/MiComida/api/productos",
             data: [
                 [],
                 [],
@@ -61,6 +59,22 @@ class foodContainer extends React.Component {
         }
     }
 
+    componentWillMount(){
+          fetch("http://localhost:8080/MiComida/api/productos?id_usuario=" + this.props.usuario, {
+            method: 'GET',
+            mode: 'cors',
+            headers: {
+                'Accept': 'application/json'
+            }
+        }).then((response) => {
+            return response.json();
+        }).then((objeto) => {
+            this.setState({
+                productos: objeto.producto
+            });
+        }).catch(err => {console.log(err);});
+    }
+
     handleSubmit = () =>{
         let aux = ["","","",""]
         let array = [4]
@@ -84,7 +98,7 @@ class foodContainer extends React.Component {
             }
         }
         path = path.substring(0, path.length-1);
-        path = "http://localhost:8080/MiComida/api" + path
+        path = "http://localhost:8080/MiComida/api/productos" + path
         this.setState({
           uriProductos : path,
           data: [
@@ -94,35 +108,25 @@ class foodContainer extends React.Component {
             ""
           ]
         })
-        
-        console.log(path)
-
-    }
-
-    componentDidMount(){
-        fetch('https://jsonplaceholder.typicode.com/users')
-            .then(response => response.json())
-            .then(json => this.setState({
-                 users: json 
-                }));
-
     }
     render() {
-        
+        if (this.state.productos !== null){
         return (
             <div>
                 <br/>
                 <button className="w3-button w3-blue w3-round-xlarge" onClick={this.handleOpen}>Buscar</button>
-                <PopUpFood open={this.state.showPopUp} onClose={this.handleClose} handleSubmit={this.handleSubmit} handleChange={this.handleChange}/>
+                <PopUpFood open={this.state.showPopUp} onClose={this.handleClose} handleSubmit={this.handleSubmit} handleChange={this.handleChange} handleSearch={this.handleSearch}/>
                 <div className="food-grid-container">
                     <div className="food-grid">
-                        {this.state.users.map(item => {
-                            return <Food key={item.id} userName={item.name}></Food>;
+                        {this.state.productos.map((producto,i) => {
+                            return <Food key={i} userName={producto.nombre}></Food>;
                         })}
                     </div>
                 </div>
             </div>
         );
+        }
+     else return (<div />);
     }
 }
 

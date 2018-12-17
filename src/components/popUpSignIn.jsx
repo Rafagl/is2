@@ -47,27 +47,27 @@ export default class popUpSignIn extends React.Component {
         }
 
         if (send) {
-            (async () => {
-                const rawResponse = await fetch(/*'https://localhost:8080/MiComida/api/usuarios*/ 'https://jsonplaceholder.typicode.com/posts', {
-                  method: 'POST',
-                  headers: {
-                    'Accept': 'application/json',
+            var url = 'http://localhost:8080/MiComida/api/usuarios';
+            fetch(url, {
+                method: 'POST',
+                mode: 'cors',
+                body: JSON.stringify({
+                  contrasena: document.getElementById('password').value,
+                  nombre_completo: document.getElementById('name').value,
+                  correo: document.getElementById('email').value,
+                  localizacion: location,
+                  ciudad: 'Madrid',
+                  foto: null
+                }),
+                headers: {
                     'Content-Type': 'application/json'
-                  },
-                  body: JSON.stringify({
-                      contrasena: document.getElementById("password").value,
-                      nombre_completo: document.getElementById("name").value,
-                      correo: document.getElementById("email").value,
-                      localizacion: location,
-                      ciudad: "Madrid"
-                    })
-                });
-                const content = await rawResponse.json();
-                console.log(content.status);
-              })();
-
+                }
+             }).then((response) => {
+                console.log(response.json);
+                alert('¡Registrado correctamente!')
+            }).catch(err => {console.log(err);});
         }
-
+        this.props.onClose()
         console.log(location)
 
     }
@@ -77,29 +77,28 @@ export default class popUpSignIn extends React.Component {
         return (
             <form onSubmit={this.handleSubmit}>
                 <Modal open={this.props.open} onClose={this.props.onClose} center>
-                    <hr />
-                    <div className="frame-father-signin" >
-                        <div className="frame" >
-                            <h3>Nombre de usuario: </h3>
-                            <input type="text" id="name" />
+                    <div className="w3-panel w3-bottombar w3-topbar w3-border-blue w3-padding-large" style={{marginTop: '35px'}} >
+                        <div className="w3-panel  w3-padding-12 w3-round-large" >
+                            <h3>Nombre completo: </h3>
+                            <input type="text" id="name" className="w3-input w3-border w3-round-large w3-margin-bottom	" />
                         </div>
-                        <div className="frame">
+                        <div className="w3-panel w3-padding-12 w3-round-large">
                             <h3>E-mail:</h3>
-                            <input type="text" id="email" />
+                            <input type="text" id="email" className="w3-input w3-border w3-round-large w3-margin-bottom	" />
 
                         </div>
-                        <div className="frame">
+                        <div className="w3-panel w3-padding-12 w3-round-large">
                             <h3>Contraseña:</h3>
-                            <input type="password" id="password" />
+                            <input type="password" id="password" className="w3-input w3-border w3-round-large w3-margin-bottom	"/>
 
                         </div>
-                        <div className="frame">
+                        <div className="w3-panel  w3-padding-24 w3-round-large">
                             <label className="container" >Barcelona
-                                <input type="checkbox" id="checkbox1"/>
+                                <input type="checkbox" id="checkbox1" className="w3-input w3-margin	" style={{margin: '35px'}}/>
                                 <span className="checkmark"></span>
                             </label>
                             <label className="container">Madrid
-                                <input type="checkbox" id="checkbox2" />
+                                <input type="checkbox" id="checkbox2" className="w3-input w3-margin	" style={{margin: '35px'}} />
                                 <span className="checkmark"></span>
                             </label>
                         </div>

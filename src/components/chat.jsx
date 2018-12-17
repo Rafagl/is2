@@ -20,10 +20,10 @@ class chat extends Component {
     render() {
         return (
             <div>
-                <div className="food-container w3-teal" onClick={this.handleOpen}>hola</div>
+                <div className="food-container w3-teal" onClick={this.handleOpen}>Chat:{this.props.chat.id_chat} - Producto: {this.props.chat.id_producto}</div>
                 {//@TODO: pasarle cada pop up su chat para que haga get o pasarke directamente el contenido
                 }
-                <PopUpChat open={this.state.showPopUp} onClose={this.handleClose} usuario={this.props.usuario}/>
+                <PopUpChat open={this.state.showPopUp} chat={this.props.chat} onClose={this.handleClose} usuario={this.props.usuario} abrir={this.handleOpen} cerrar={this.handleClose}/>
             </div>
         );
     }

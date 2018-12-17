@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import './App.css';
-import foodContainer from './components/foodContainer';
+import FoodContainer from './components/foodContainer';
 import NavBar from './components/navBar';
 import userContainer from './components/userContainer';
-import profileContainer from './components/profileContainer'
-import publish from './components/publish'
-import chats from './components/chats'
+import ProfileContainer from './components/profileContainer'
+import Publish from './components/publish'
+import Chats from './components/chats'
 
 class App extends Component {
 
     state = {
-        user: "",
+        user: "1",
         isLogged : true
     }
 
     logIn = (usuario) =>{
         this.setState({
-            user: usuario.id,
+            user: usuario,
             isLogged: true
         })
     }
@@ -37,12 +37,10 @@ class App extends Component {
                             <div>
                                 <Route exact path="/" />
                                 <Route exact path="/usuarios" component={userContainer} />
-                                <Route exact path="/productos" component={foodContainer} />
-                                <Route exact path="/perfil" component={profileContainer} />
-                                <Route exact path="/publicar" component={publish} />
-                                <Route exact path="/chats" component={chats} usuario={this.state.user} />
-
-
+                                <Route exact path="/productos" render={()=><FoodContainer usuario={this.state.user}/>} />
+                                <Route exact path="/perfil" render={()=><ProfileContainer usuario={this.state.user}/>}/>
+                                <Route exact path="/publicar" render={()=><Publish usuario={this.state.user}/>}/>
+                                <Route exact path="/chats" render={()=><Chats usuario={this.state.user}/>}/>
                             </div>
                         </div>
                     </Router>
@@ -51,7 +49,7 @@ class App extends Component {
         }else{
             return (
                 <div className="App">
-                    <NavBar isLogged = {this.state.isLogged}/>
+                    <NavBar isLogged = {this.state.isLogged} logIn={this.logIn} usuario={this.state.user}/>
                 </div>
             )
         }

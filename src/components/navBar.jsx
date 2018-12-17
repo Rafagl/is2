@@ -53,11 +53,11 @@ class navBar extends Component {
             )
         } else {
             return (
-                <ul className="w3-bar w3-grey">
-                    <button className="w3-bar-item w3-button" onClick={this.handleOpenS} >Registarse</button>
-                    {this.state.showSignIn ? <PopUpSignIn open={this.state.showSignIn} onClose={this.handleCloseS}/> : null}
-                    <button style={{ float: 'right' }} className="w3-bar-item w3-button" onClick={this.handleOpenL}>Iniciar sesión</button>
-                    {this.state.showLogIn ? <PopUpLogIn open={this.state.showLogIn} onClose={this.handleCloseL} LogIn={this.props.LogIn}/> : null}
+                <ul className="w3-bar w3-teal">
+                    <button className="w3-bar-item w3-button" onClick={this.handleOpenS} ><h3>Registarse</h3></button>
+                    {this.state.showSignIn ? <PopUpSignIn open={this.state.showSignIn} onClose={this.handleCloseS} usuario={this.props.user}/> : null}
+                    <button style={{ float: 'right' }} className="w3-bar-item w3-button" onClick={this.handleOpenL}><h3>Iniciar sesión</h3></button>
+                    {this.state.showLogIn ? <PopUpLogIn open={this.state.showLogIn} onClose={this.handleCloseL} logIn={this.props.logIn}/> : null}
                 </ul>
             )
         }
